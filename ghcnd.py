@@ -25,6 +25,17 @@ def process_countries_txt(filepath):
     return df
 
 
+def process_states_txt(filepath):
+    """
+    Format is the same as ghcnd-countries.txt
+    Resource: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-states.txt
+
+    :param filepath:
+    :return:
+    """
+    return process_countries_txt(filepath)
+
+
 def process_inventory_txt(filepath):
     """
     Process ghcnd-inventory.txt: "File listing the periods of record for each station and element"
@@ -63,7 +74,6 @@ def process_stations_txt(filepath):
     :param filepath:
     :return: pandas.DataFrame
     """
-
     names = [
         'id',
         'latitude',
