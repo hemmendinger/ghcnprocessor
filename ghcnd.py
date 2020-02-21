@@ -5,7 +5,9 @@ def process_countries_txt(filepath):
     """
     Process ghcnd-countries.txt
 
-    Resource: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-countries.txt
+    Resource locations:
+      ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-countries.txt
+      https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-countries.txt
 
     :param filepath:
     :return: pandas.DataFrame
@@ -28,7 +30,9 @@ def process_countries_txt(filepath):
 def process_states_txt(filepath):
     """
     Format is the same as ghcnd-countries.txt
-    Resource: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-states.txt
+    Resource locations:
+      ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-states.txt
+      https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-states.txt
 
     :param filepath:
     :return:
@@ -39,6 +43,10 @@ def process_states_txt(filepath):
 def process_inventory_txt(filepath):
     """
     Process ghcnd-inventory.txt: "File listing the periods of record for each station and element"
+
+    Resource locations:
+      ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt
+      https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt
     :param filepath:
     :return: pandas.DataFrame
     """
@@ -67,8 +75,11 @@ def process_inventory_txt(filepath):
 
 def process_stations_txt(filepath):
     """
-    Processes file containing all ghcnd station meta data available at:
-        ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt
+    Processes file containing all ghcnd station meta data.
+
+    Resource locations:
+      ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt
+      https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stationst.txt
 
     Additional reference: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt
     :param filepath:
