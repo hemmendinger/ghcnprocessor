@@ -1,6 +1,30 @@
 import pandas as pd
 
 
+def process_countries_txt(filepath):
+    """
+    Process ghcnd-countries.txt
+
+    Resource: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-countries.txt
+
+    :param filepath:
+    :return: pandas.DataFrame
+    """
+    names = [
+        'code',
+        'name',
+    ]
+
+    widths = [
+        (0,2),  # country code
+        (3,50),  # country name
+    ]
+
+    df = pd.read_fwf(colspecs=widths, names=names, filepath_or_buffer=filepath)
+
+    return df
+
+
 def process_inventory_txt(filepath):
     """
     Process ghcnd-inventory.txt: "File listing the periods of record for each station and element"
