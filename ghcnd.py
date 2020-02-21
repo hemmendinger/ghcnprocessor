@@ -1,15 +1,44 @@
 import pandas as pd
 
-def process
+
+def process_inventory_txt(filepath):
+    """
+    Process ghcnd-inventory.txt: "File listing the periods of record for each station and element"
+    :param filepath:
+    :return: pandas.DataFrame
+    """
+    names = [
+        'id',
+        'latitude',
+        'longitude',
+        'element',
+        'firstyear',
+        'lastyear',
+    ]
+
+    widths = [
+        (0, 11),  # id
+        (12, 20),  # latitude
+        (21, 30),  # longitude
+        (31, 35),  # element
+        (36, 40),  # firstyear
+        (41, 45),  # lastyear
+    ]
+
+    df = pd.read_fwf(colspecs=widths, names=names, filepath_or_buffer=filepath)
+
+    return df
+
+
 def process_stations_txt(filepath):
-    '''
+    """
     Processes file containing all ghcnd station meta data available at:
         ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt
 
     Additional reference: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt
     :param filepath:
-    :return:
-    '''
+    :return: pandas.DataFrame
+    """
 
     names = [
         'id',
@@ -36,6 +65,8 @@ def process_stations_txt(filepath):
     ]
 
     df = pd.read_fwf(colspecs=widths, names=names, filepath_or_buffer=filepath)
+
+    # TODO: Set dtypes
 
     return df
 
