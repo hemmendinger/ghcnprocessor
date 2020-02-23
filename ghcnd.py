@@ -115,3 +115,64 @@ def process_stations_txt(filepath):
 
     return df
 
+def process_dly(filepath):
+    """Each dly file contains all data for one station.
+    Each row is one month of data for one element.
+
+    :param filepath:
+    :return:
+    """
+    pass
+
+
+def read_dly(filepath):
+    """
+
+    :param filepath:
+    :return:
+    """
+    names = [
+        'id',
+        'year',
+        'month',
+        'element',
+        # Plus more names generated:
+        # value1, mflag1, qflag1, sflag1, ... , value31, mflag31, qflag31, sflag31
+    ]
+
+    name_stems = [
+        'value',
+        'mflag',
+        'qflag',
+        'sflag',
+    ]
+
+    for n in range(1,32):
+        for stem in name_stems:
+            names.append(stem+str(n))
+
+    widths = [
+        (0, 11),  # id
+        (11, 15),  # year
+        (15, 17),  # month
+        (17, 21),  # element
+        # Plus widths generated for the 1-31 possible days per month
+    ]
+
+    start_widths = [
+        (21, 26),
+        (26, 27),
+        (27, 28),
+        (28, 29),
+    ]
+
+    for n in range(0, 31):
+        char_gap = 8
+        for w in start_widths:
+            lower = w[0] + (char_gap * n)
+            upper = w[1] + (char_gap * n)
+            widths.append((lower, upper))
+
+    df = pd.read_fwf(colspecs=widths, names=names, filepath_or_buffer=filepath)
+
+    return df
