@@ -1,5 +1,11 @@
 import pandas as pd
 
+resources = {
+    'countries':'https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-countries.txt',
+    'states':'https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-states.txt',
+    'inventory':'https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt',
+    'stations':'https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stationst.txt'
+}
 
 def process_countries_txt(filepath):
     """
@@ -114,6 +120,16 @@ def process_stations_txt(filepath):
     # TODO: Set dtypes
 
     return df
+
+def process_stations_id(id):
+    """
+    First 2 characters are a FIPS country code
+    Third character is a "network code" identifying the station numbering system used
+    Last 8 characters are the actual station ID
+    :param id: str
+    :return:
+    """
+    pass
 
 def process_dly(filepath):
     """Each dly file contains all data for one station.
